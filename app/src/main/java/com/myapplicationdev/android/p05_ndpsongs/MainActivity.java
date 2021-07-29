@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.RatingBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     EditText etTitle, etSingers, etYear;
     Button btnInsert, btnShowList;
     RadioGroup rg;
+    RatingBar rbStars;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         btnInsert = findViewById(R.id.btnInsertSong);
         btnShowList = findViewById(R.id.btnShowList);
         rg = findViewById(R.id.rgStars);
+        rbStars = findViewById(R.id.ratingBarInput);
 
         btnInsert.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
                 String year_str = etYear.getText().toString().trim();
                 int year = Integer.valueOf(year_str);
-                int stars = getStars();
+                int stars = (int) rbStars.getRating();
 
                 DBHelper dbh = new DBHelper(MainActivity.this);
                 long result = dbh.insertSong(title, singers, year, stars);
@@ -71,27 +74,5 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-    private int getStars() {
-        int stars = 1;
-        switch (rg.getCheckedRadioButtonId()) {
-            case R.id.radio1:
-                stars = 1;
-                break;
-            case R.id.radio2:
-                stars = 2;
-                break;
-            case R.id.radio3:
-                stars = 3;
-                break;
-            case R.id.radio4:
-                stars = 4;
-                break;
-            case R.id.radio5:
-                stars = 5;
-                break;
-        }
-        return stars;
-    }
 
 }

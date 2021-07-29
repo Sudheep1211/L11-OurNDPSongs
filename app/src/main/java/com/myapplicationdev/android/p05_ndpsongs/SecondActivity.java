@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,6 +22,7 @@ public class SecondActivity extends AppCompatActivity {
     String moduleCode;
     int requestCode = 9;
     Button btn5Stars;
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,25 @@ public class SecondActivity extends AppCompatActivity {
                 caSong.notifyDataSetChanged();
             }
         });
+
+        final ArrayList<String> years = dbh.getYears();
+        final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, years);
+        spinner = findViewById(R.id.spinner);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                DBHelper dbh = new DBHelper(SecondActivity.this);
+                songList.clear();
+                songList.addAll(dbh.getAllSongsByYear(Integer.valueOf(years.get(position))));
+                caSong.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        spinner.setAdapter(spinnerAdapter);
     }
 
 

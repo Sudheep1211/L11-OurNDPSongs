@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -30,11 +32,11 @@ public class CustomAdapter extends ArrayAdapter {
 
         View rowView = inflater.inflate(layout_id, parent, false);
 
-
         TextView tvTitle = rowView.findViewById(R.id.tvTitle);
         TextView tvYear = rowView.findViewById(R.id.tvYear);
         TextView tvSingers = rowView.findViewById(R.id.tvSingers);
-        TextView tvStars = rowView.findViewById(R.id.textViewStars);
+
+        RatingBar rbStars = rowView.findViewById(R.id.ratingBarStars);
 
 
         Song currentSong = SongList.get(position);
@@ -45,16 +47,29 @@ public class CustomAdapter extends ArrayAdapter {
         tvSingers.setText(currentSong.getSingers());
 
         if(currentSong.getStars() == 1){
-            tvStars.setText("*");
+            rbStars.setRating(1);
+
         } if (currentSong.getStars() == 2){
-            tvStars.setText("* *");
+            rbStars.setRating(2);
+
         } if (currentSong.getStars() == 3){
-            tvStars.setText("* * *");
+            rbStars.setRating(3);
+
         } if (currentSong.getStars() == 4){
-            tvStars.setText("* * * *");
+            rbStars.setRating(4);
+
         } if (currentSong.getStars() == 5){
-            tvStars.setText("* * * * *");
+            rbStars.setRating(5);
+
         }
+
+        ImageView ivNew = rowView.findViewById(R.id.imageViewNew);
+        if(currentSong.getYearReleased() >= 2019){
+            ivNew.setImageResource(R.drawable.new_image);
+        } else{
+            ivNew.setVisibility(View.INVISIBLE);
+        }
+
 
         return rowView;
     }

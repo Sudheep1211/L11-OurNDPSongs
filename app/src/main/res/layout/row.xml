@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_margin="10dp">
+    android:layout_margin="10dp"
+    android:descendantFocusability="blocksDescendants">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,35 +24,40 @@
                 android:text="Title"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="#a312ff" />
+            <TextView
+                android:id="@+id/tvSingers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Singers"
+                android:textColor="#13f08d" />
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+
                 <TextView
                     android:id="@+id/tvYear"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Year"
-                    android:layout_margin="5dp"/>
+                    android:layout_margin="5dp"
+                    android:text="Year" />
 
-                <TextView
-                    android:id="@+id/textViewStars"
+                <ImageView
+                    android:id="@+id/imageViewNew"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/new_image" />
+
+                <RatingBar
+                    android:id="@+id/ratingBarStars"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="*****"
-                    android:textColor="#FF3378"/>
+                    android:numStars="5"
+                    android:isIndicator="true"/>
 
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/tvSingers"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Singers"
-                android:textColor="#13f08d"/>
 
         </LinearLayout>
 
