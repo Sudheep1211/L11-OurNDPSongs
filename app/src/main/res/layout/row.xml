@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Title"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#a312ff" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Year"
+                    android:layout_margin="5dp"/>
+
+                <TextView
+                    android:id="@+id/textViewStars"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="*****"
+                    android:textColor="#FF3378"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvSingers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Singers"
+                android:textColor="#13f08d"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:background="#2288EE"
+        android:layout_width="match_parent"
+        android:layout_height="3dp" />
+
+</LinearLayout>
